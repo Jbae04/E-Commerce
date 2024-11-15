@@ -1,90 +1,169 @@
-/* Color Variables */
 :root {
-    --dark-teal: #003135;
-    --medium-teal: #024950;
-    --terracotta: #964734;
-    --turquoise: #0FA4AF;
-    --light-blue: #AFDDE5;
+    --primary-color: #00f0ff;
+    --secondary-color: #003B3E;
+    --background-color: #001618;
+    --text-color: #ffffff;
+    --accent-color: #00f0ff;
+    --overlay-color: rgba(0, 22, 24, 0.9);
 }
 
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
 }
 
-/* Header Styles */
-.header {
-    background-color: var(--dark-teal);
-    padding: 1rem;
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.nav {
+.main-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    color: white;
+    padding: 1rem 2rem;
+    background-color: var(--overlay-color);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }
 
-.search-input {
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-btn, .footer-btn {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover, .footer-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.cart-icon {
+    cursor: pointer;
     padding: 0.5rem;
-    width: 300px;
-    border: none;
-    border-radius: 4px;
+    border: 1px solid var(--primary-color);
 }
 
-/* Product Grid */
-.products {
+.cart-count {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 0.2rem 0.5rem;
+    border-radius: 50%;
+    font-size: 0.8rem;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 6rem 2rem 2rem;
+}
+
+.welcome-section {
+    text-align: left;
+    margin-bottom: 4rem;
+}
+
+.welcome-section h1 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.hero-text {
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.hero-text span {
+    display: block;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.discover-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.discover-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    gap: 2rem;
+    padding: 2rem 0;
 }
 
 .product-card {
-    border: 1px solid var(--medium-teal);
-    padding: 15px;
-    border-radius: 4px;
+    background-color: var(--overlay-color);
+    border: 1px solid var(--primary-color);
+    padding: 1rem;
     text-align: center;
+    backdrop-filter: blur(5px);
 }
 
 .product-image {
     width: 100%;
-    max-width: 200px;
     height: auto;
+    margin-bottom: 1rem;
 }
 
-/* Cart Styles */
-.cart-icon {
-    cursor: pointer;
-    position: relative;
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--overlay-color);
+    backdrop-filter: blur(10px);
 }
 
-.cart-count {
-    background-color: var(--terracotta);
-    padding: 2px 6px;
-    border-radius: 50%;
-    font-size: 12px;
-}
-
-.cart-modal {
-    display: none;
-    position: fixed;
-    top: 60px;
-    right: 20px;
-    background: white;
-    padding: 20px;
-    border: 1px solid var(--medium-teal);
-    border-radius: 4px;
-    width: 300px;
+@media (max-width: 768px) {
+    .hero-text {
+        font-size: 2rem;
+    }
+    
+    .nav-buttons {
+        gap: 0.5rem;
+    }
+    
+    .footer-nav {
+        flex-wrap: wrap;
+    }
 }
