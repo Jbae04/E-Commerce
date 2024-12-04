@@ -3,34 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-Commerce Website</title>
+  <title>Profile - E-Commerce Website</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="main-nav">
     <div class="logo">FaceGoogAplix</div>
     <div class="nav-buttons">
-      <button class="nav-btn shop-now">SHOP NOW</button>
+      <a href="index.html" class="nav-btn">Home</a>
       <a href="cart.html" class="cart-icon">
         <i class="fa fa-shopping-cart"></i>
         <span class="cart-count">0</span>
       </a>
-      <a href="profile.html" class="nav-btn">Profile</a>
       <button class="nav-btn menu-toggle">☰</button>
     </div>
   </header>
 
   <main class="content">
-    <section class="welcome-section">
-      <h1>Welcome</h1>
-      <div class="hero-text">
-        <span>[PREMIUM]</span> HAS ARRIVED
+    <section class="profile-container">
+      <h1>Your Profile</h1>
+      <div class="profile-info">
+        <div class="profile-image">
+          <img src="/api/placeholder/200/200" alt="Profile Image">
+        </div>
+        <div class="profile-details">
+          <p>Name: John Doe</p>
+          <p>Email: john.doe@example.com</p>
+          <p>Address: 123 Main Street, Anytown USA</p>
+          <p>Phone: 555-555-5555</p>
+        </div>
       </div>
-      <button class="discover-btn">DISCOVER</button>
+      <button class="nav-btn edit-profile">Edit Profile</button>
     </section>
 
-    <section id="products" class="products-grid">
-      <!-- Products will be dynamically added here -->
+    <section class="order-history">
+      <h2>Order History</h2>
+      <div class="order-list">
+        <!-- Order history will be dynamically added here -->
+      </div>
     </section>
   </main>
 
@@ -42,6 +52,6 @@
     <a href="#" class="footer-btn">FULLSCREEN</a>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="profile-script.js"></script>
 </body>
 </html>
