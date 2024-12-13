@@ -1,10 +1,11 @@
 :root {
     --primary-color: #00f0ff;
-    --secondary-color: #003B3E;
-    --background-color: #001618;
+    --secondary-color: #000000;
+    --background-color: #000000;
     --text-color: #ffffff;
     --accent-color: #00f0ff;
     --overlay-color: rgba(0, 22, 24, 0.9);
+
   }
   
   * {
@@ -15,15 +16,26 @@
   }
   
   body {
-    background-color: var(--background-color);
+    background-color:var(--background-color);
     color: var(--text-color);
     min-height: 100vh;
   }
+
+  #HomePage{
+    background-image: url(https://i.pinimg.com/originals/a4/7b/c0/a47bc003e83231811753eac24b09431c.gif);
+    background-repeat:no-repeat;
+    background-size: 100%; 
+    background-position:absolute ;
+top:-10px;
+  }
+
+
   
   .container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+  
   }
   
   .main-nav {
