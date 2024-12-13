@@ -1,15 +1,15 @@
 const products = [
     {
       id: 1,
-      name: 'Product 1',
-      price: 99.99,
-      image: '/api/placeholder/200/200'
+      name: 'Nike Air Force 1',
+      price: 115.00,
+      image: 'img/AF1.png'
     },
     {
       id: 2,
-      name: 'Product 2',
-      price: 149.99,
-      image: '/api/placeholder/200/200'
+      name: 'Nike Dunk Low Retro',
+      price: 78.00,
+      image: 'img/panda.png'
     }
   ];
   
