@@ -174,6 +174,16 @@ function loadProductPage() {
     document.getElementById('productDescription').innerHTML = product.description || 'No description available.';
     document.getElementById('productPrice').textContent = `$${product.price.toFixed(2)}`;
 
+    const addToCartBtn = document.createElement('button');
+    addToCartBtn.textContent = 'Add to Cart';
+    addToCartBtn.classList.add('nav-btn');
+    addToCartBtn.id = `add-to-cart-btn`;
+    addToCartBtn.addEventListener('click', function() {
+      addToCart(product.id); 
+    });
+
+    document.querySelector('.product-info').appendChild(addToCartBtn);
+
     const relatedProductsContainer = document.getElementById('related-products');
     relatedProductsContainer.innerHTML = products.filter(p => p.category === product.category && p.id !== product.id)
       .map(relatedProduct => `
@@ -183,13 +193,14 @@ function loadProductPage() {
             <h3>${relatedProduct.name}</h3>
           </a>
           <p>$${relatedProduct.price.toFixed(2)}</p>
-          <button class="nav-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+          <button class="nav-btn" onclick="addToCart(${relatedProduct.id})">Add to Cart</button>
         </div>
       `).join('');
   } else {
     console.error('Product not found');
   }
 }
+
 
 
 function addToCart(productId) {
