@@ -1,58 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - E-Commerce Website</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - E-Commerce Website</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="main-nav">
-    <div class="logo">FaceGoogAplix</div>
-    <div class="nav-buttons">
-      <button class="nav-btn shop-now">SHOP NOW</button>
-      <a href="cart.html" class="cart-icon">
-        <i class="fa fa-shopping-cart"></i>
-        <span class="cart-count">0</span>
-      </a>
-      <a href="profile.html" class="nav-btn">Profile</a>
-      <div class="dropdown">
-        <button class="nav-btn menu-toggle">☰</button>
-        <div id="menuDropdown" class="dropdown-content">
-          <input type="text" id="dropdownSearch" placeholder="SEARCH..." 
-          class="dropdown-search"/>
-          <a href="#">PRODUCTS</a>
-          <a href="#">PREFERENCES</a>
-          <a href="#">FAQ</a>
+    <header class="main-nav">
+        <div class="logo">FaceGoogAplix</div>
+        <div class="nav-buttons">
+            <a href="shop.html" class="nav-btn">Shop</a>
+            <a href="signup.html" class="nav-btn">Sign Up</a>
+            <div class="dropdown">
+                <button class="nav-btn menu-toggle">☰</button>
+                <div id="menuDropdown" class="dropdown-content">
+                    <input type="text" id="dropdownSearch" placeholder="SEARCH..." 
+                    class="dropdown-search"/>
+                    <a href="#">PRODUCTS</a>
+                    <a href="#">PREFERENCES</a>
+                    <a href="#">FAQ</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="content">
-    <section class="login-container">
-      <h1>Login</h1>
-      <form id="login-form">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+    <main class="content">
+        <section class="login-container">
+            <h1>Login</h1>
+            <form id="loginForm" onsubmit="event.preventDefault(); login(email.value, password.value)">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" class="nav-btn">Login</button>
+            </form>
+            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+        </section>
+    </main>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+    <footer class="footer-nav">
+        <a href="#" class="footer-btn">MORE</a>
+        <a href="#" class="footer-btn">CONTACT</a>
+        <a href="#" class="footer-btn">SHARE</a>
+        <a href="#" class="footer-btn">STATS</a>
+        <a href="#" class="footer-btn">FULLSCREEN</a>
+    </footer>
 
-        <button type="submit" class="nav-btn">Login</button>
-      </form>
-    </section>
-  </main>
-
-  <footer class="footer-nav">
-    <a href="#" class="footer-btn">MORE</a>
-    <a href="#" class="footer-btn">CONTACT</a>
-    <a href="#" class="footer-btn">SHARE</a>
-    <a href="#" class="footer-btn">STATS</a>
-    <a href="#" class="footer-btn">FULLSCREEN</a>
-  </footer>
-
-  <script src="auth-script.js"></script>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
