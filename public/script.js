@@ -320,6 +320,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', checkout);
     }
+    const menuToggle = document.querySelector('.menu-toggle');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            const dropdown = document.getElementById('menuDropdown');
+            dropdown.classList.toggle('show');
+            menuToggle.blur();
+        });
+    }
 });
 
 document.querySelector('.menu-toggle')?.addEventListener('click', () => {
