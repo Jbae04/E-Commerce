@@ -109,7 +109,61 @@ h2{
     border-radius: 50%;
     font-size: 0.8rem;
   }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    min-width: 338px;
+    overflow: hidden;
+  }
   
+  .dropdown-content a {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+  }
+  .dropdown-search {
+    width: 100%; 
+    padding: 0.5rem;
+    border: 1px solid var(--primary-color);
+    background-color: var(--background-color);
+    border-radius: 5px 5px 0 0; 
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+  }
+  
+  .dropdown-search:hover::placeholder {
+     color: var(--background-color);  
+  }
+  .dropdown-search:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    opacity: 0.9;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .dropdown-search::placeholder {
+    color: var(--primary-color);
+    opacity: 0.7;
+  }
+  .show {
+    display: block;
+  }
   .content {
     flex-grow: 1;
     padding: 6rem 2rem 2rem;
