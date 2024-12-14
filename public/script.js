@@ -10,6 +10,12 @@ const products = [
         name: 'Nike Dunk Low Retro',
         price: 78.00,
         image: 'img/panda.png'
+    },
+    {
+        id: 3,
+        name: 'Nike Dunk Low Retro',
+        price: 78.00,
+        image: 'img/panda.png'
     }
 ];
 
@@ -55,7 +61,10 @@ function renderProducts() {
     const productsContainer = document.getElementById('products');
     if (!productsContainer) return;
 
-    productsContainer.innerHTML = products.map(product => `
+    const isHomePage = document.getElementById('HomePage') !== null;
+    const productsToRender = isHomePage ? products.slice(0, 2) : products;
+
+    productsContainer.innerHTML = productsToRender.map(product => `
         <div class="product-card">
             <img src="${product.image}" alt="${product.name}" class="product-image">
             <h3>${product.name}</h3>
