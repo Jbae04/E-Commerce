@@ -13,11 +13,84 @@ const products = [
     },
     {
         id: 3,
-        name: 'Nike Dunk Low Retro',
-        price: 78.00,
+        name: 'Nike Air Max 1 Essential',
+        price: 140.00,
+        image: 'img/NIKEAIR.png'
+    },
+    {
+        id: 4,
+        name: 'Nike Air Max 270',
+        price: 160.00,
+        image: 'img/AIR2.png'
+    },
+    {
+        id: 5,
+        name: 'Knu Skool Suede Shoe',
+        price: 75.00,
+        image: 'img/vans1.png'
+    },
+    {
+        id: 6,
+        name: 'Nike Zoom Vomero 5',
+        price: 160.00,
+        image: 'img/NIKEZOOM.png'
+    },
+    {
+        id: 7,
+        name: 'Air Jordan 1 Mid',
+        price: 125.00,
+        image: 'img/AIRJORDAN1MID.png'
+    },
+    {
+        id: 8,
+        name: 'Nike Air Max 90',
+        price: 130.00,
+        image: 'img/airmax90.png'
+    },
+    {
+        id: 9,
+        name: 'Yeezy Slide Onyx',
+        price: 103.00,
+        image: 'img/YEEZYSLIDE.png'
+    },
+    {
+        id: 10,
+        name: 'Air Jordan 3 "Dark Iris"',
+        price: 200.00,
+        image: 'img/AJ3.jpg'
+    },
+    {
+        id: 11,
+        name: 'Air Jordan 5 Retro "White and Black"',
+        price: 200.00, 
+        image: 'img/AIRJORDAN5RETRO.png'
+    },
+    {
+        id: 12,
+        name: 'Samba OG Shoes',
+        price: 100.00,
+        image: 'img/SAMBAOG.png'
+    },
+    {
+        id: 13,
+        name: 'Ultraboost 1.0 Shoes',
+        price: 180.00,
         image: 'img/panda.png'
-    }
+    },
+    {
+        id: 14,
+        name:'Chuck Taylor All Star Durable Neutrals CX EXP2',
+        price: 85.00,
+        image: 'img/CHUCKTAYLOR.png'
+    },
+    {
+        id: 15,
+        name: 'Converse Weapon Leather',
+        price: 100.00,
+        image: 'img/converse1.png'
+    },
 ];
+
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -253,5 +326,5 @@ document.querySelector('.menu-toggle')?.addEventListener('click', () => {
     const dropdown = document.getElementById('menuDropdown');
     dropdown.classList.toggle('show');
     const button = document.querySelector('.menu-toggle');
-    if (button) { button.blur(); }
+    if (button) { button.blur();}  
 });
