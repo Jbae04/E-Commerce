@@ -209,34 +209,35 @@ function removeFromCart(index) {
   saveCart();
 }
 
+
 function updateCartUI() {
   const cartCount = document.querySelector('.cart-count');
   if (cartCount) {
-    cartCount.textContent = cart.length;
+      cartCount.textContent = cart.length;
   }
 
   const cartItems = document.getElementById('cart-items');
   if (!cartItems) return;
 
   if (cart.length === 0) {
-    cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
-    return;
+      cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+      return;
   }
 
   const total = cart.reduce((sum, item) => sum + item.price, 0);
-
+  
   cartItems.innerHTML = cart.map((item, index) => `
-        <div class="product-card">
-            <img src="${item.image}" alt="${item.name}" class="product-image">
-            <h3>${item.name}</h3>
-            <p>$${item.price.toFixed(2)}</p>
-            <button class="nav-btn" onclick="removeFromCart(${index})">Remove</button>
-        </div>
-    `).join('');
+      <div class="product-card">
+          <img src="${item.image}" alt="${item.name}" class="product-image">
+          <h3>${item.name}</h3>
+          <p>$${item.price.toFixed(2)}</p>
+          <button class="nav-btn" onclick="removeFromCart(${index})">Remove</button>
+      </div>
+  `).join('');
 
   const cartTotal = document.getElementById('cart-total');
   if (cartTotal) {
-    cartTotal.textContent = `$${total.toFixed(2)}`;
+      cartTotal.textContent = `$${total.toFixed(2)}`;
   }
 }
 
