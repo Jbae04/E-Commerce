@@ -148,10 +148,83 @@ function attachLoginHandler() {
     }
 }
 
+function checkout() {
+    if (!isLoggedIn()) {
+        alert('Please log in to checkout');
+        window.location.href = 'login.html';
+        return;
+    }
+    if (cart.length === 0) {
+        alert('Your cart is empty');
+        return;
+    }
+    const currentUser = getCurrentUser();
+    if (!currentUser) {
+        alert('Please log in to checkout');
+        window.location.href = 'login.html';
+        return;
+    }
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    
+    const order = {
+        id: Date.now(),
+        items: [...cart],
+        total: total,
+        date: new Date().toISOString(),
+        status: 'Processed'
+    };
+    
+    let userOrders = JSON.parse(localStorage.getItem('userOrders')) || {};
+    
+    if (!userOrders[currentUser.email]) {
+        userOrders[currentUser.email] = [];
+    }
+    userOrders[currentUser.email].push(order);
+    
+    localStorage.setItem('userOrders', JSON.stringify(userOrders));
+    
+    cart = [];
+    saveCart();
+    
+    alert(`Order placed successfully! Total: $${total.toFixed(2)}`);
+    window.location.href = 'index.html';
+}
+
+function updateOrderHistoryUI() {
+    const orderListContainer = document.querySelector('.order-list');
+    if (!orderListContainer) return;
+    const currentUser = getCurrentUser();
+    if (!currentUser) return;
+    const userOrders = JSON.parse(localStorage.getItem('userOrders')) || {};
+    const orders = userOrders[currentUser.email] || [];
+    if (orders.length === 0) {
+        orderListContainer.innerHTML = '<p>No order history found.</p>';
+        return;
+    }
+    orderListContainer.innerHTML = orders.map(order => `
+        <div class="order-card">
+            <p>Order ID: ${order.id}</p>
+            <p>Date: ${new Date(order.date).toLocaleDateString()}</p>
+            <p>Total: $${order.total.toFixed(2)}</p>
+            <p>Status: ${order.status}</p>
+            <div class="order-items">
+                ${order.items.map(item => `
+                    <div class="order-item">
+                        <img src="${item.image}" alt="${item.name}" class="order-item-image">
+                        <span>${item.name}</span>
+                        <span>$${item.price.toFixed(2)}</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `).join('');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     updateCartUI();
     updateProfileUI();
+    updateOrderHistoryUI();
     attachLoginHandler();
 
     if (isLoggedIn()) {
@@ -159,6 +232,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (navButtons) {
             navButtons.innerHTML += `<button onclick="logout()" class="nav-btn">Logout</button>`;
         }
+    }
+
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', checkout);
     }
 });
 

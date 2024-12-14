@@ -1,67 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile - E-Commerce Website</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="main-nav">
-    <div class="logo">FaceGoogAplix</div>
-    <div class="nav-buttons">
-      <a href="cart.html" class="cart-icon">
-        <i class="fa fa-shopping-cart"></i>
-        <span class="cart-count">0</span>
-      </a>
-      <div class="dropdown">
-        <button class="nav-btn menu-toggle">☰</button>
-        <div id="menuDropdown" class="dropdown-content">
-          <input type="text" id="dropdownSearch" placeholder="SEARCH..." 
-          class="dropdown-search"/>
-          <a href="index.html">HOME</a>
-          <a href="shop.html">SHOP</a>
-          <a href="#">PREFERENCES</a>
-          <a href="#">FAQ</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - E-Commerce Website</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="main-nav">
+      <div class="logo">FaceGoogAplix</div>
+      <div class="nav-buttons">
+        <a href="cart.html" class="cart-icon">
+          <i class="fa fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </a>
+        <div class="dropdown">
+          <button class="nav-btn menu-toggle">☰</button>
+          <div id="menuDropdown" class="dropdown-content">
+            <input
+              type="text"
+              id="dropdownSearch"
+              placeholder="SEARCH..."
+              class="dropdown-search"
+            />
+            <a href="index.html">HOME</a>
+            <a href="shop.html">SHOP</a>
+            <a href="#">PREFERENCES</a>
+            <a href="#">FAQ</a>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="content">
-    <section class="profile-container">
-      <h1>Your Profile</h1>
-      <div class="profile-info">
-        <div class="profile-image">
-          <img src="/api/placeholder/200/200" alt="Profile Image">
+    <main class="content">
+      <section class="profile-container">
+        <h1>Your Profile</h1>
+        <div class="profile-info">
+          <div class="profile-image">
+            <img src="/api/placeholder/200/200" alt="Profile Image" />
+          </div>
+          <div class="profile-details">
+            <p>Name: John Doe</p>
+            <p>Email: john.doe@example.com</p>
+            <p>Address: 123 Main Street, Anytown USA</p>
+            <p>Phone: 555-555-5555</p>
+          </div>
         </div>
-        <div class="profile-details">
-          <p>Name: John Doe</p>
-          <p>Email: john.doe@example.com</p>
-          <p>Address: 123 Main Street, Anytown USA</p>
-          <p>Phone: 555-555-5555</p>
+        <button class="nav-btn edit-profile">Edit Profile</button>
+      </section>
+
+      <section class="order-history">
+        <h2>Order History</h2>
+        <div class="order-list">
+          <!-- Order history will be dynamically added here -->
         </div>
-      </div>
-      <button class="nav-btn edit-profile">Edit Profile</button>
-    </section>
+      </section>
+    </main>
 
-    <section class="order-history">
-      <h2>Order History</h2>
-      <div class="order-list">
-        <!-- Order history will be dynamically added here -->
-      </div>
-    </section>
-  </main>
+    <footer class="footer-nav">
+      <a href="#" class="footer-btn">MORE</a>
+      <a href="#" class="footer-btn">CONTACT</a>
+      <a href="#" class="footer-btn">SHARE</a>
+      <a href="#" class="footer-btn">STATS</a>
+      <a href="#" class="footer-btn">FULLSCREEN</a>
+    </footer>
 
-  <footer class="footer-nav">
-    <a href="#" class="footer-btn">MORE</a>
-    <a href="#" class="footer-btn">CONTACT</a>
-    <a href="#" class="footer-btn">SHARE</a>
-    <a href="#" class="footer-btn">STATS</a>
-    <a href="#" class="footer-btn">FULLSCREEN</a>
-  </footer>
-
-  <script src="profile-script.js"></script>
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
