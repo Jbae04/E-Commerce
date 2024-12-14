@@ -3,90 +3,105 @@ const products = [
     id: 1,
     name: 'Nike Air Force 1',
     price: 115.00,
+    description: `The Nike Air Force 1 is a modern take on the iconic design, featuring a leather upper and a durable rubber sole. With Air-Sole cushioning for added comfort, it’s suitable for both casual and active wear. The timeless style continues to appeal to sneaker enthusiasts worldwide.<br><br>Manufacture Year: 2021<br><br>Key Features: Leather upper, rubber sole, Air-Sole cushioning.`,
     image: 'img/AF1.png'
   },
   {
     id: 2,
     name: 'Nike Dunk Low Retro',
     price: 78.00,
+    description: `The Nike Dunk Low Retro brings back the 1985 classic with updated construction. Its leather upper ensures durability, while the cushioned midsole offers all-day comfort. This re-release has captured sneakerheads’ attention with its clean design and versatile appeal.<br><br>Manufacture Year: 2020<br><br>Key Features: Leather upper, cushioned midsole, retro-inspired design.`,
     image: 'img/panda.png'
   },
   {
     id: 3,
     name: 'Nike Air Max 1 Essential',
     price: 140.00,
+    description: `The Nike Air Max 1 Essential brings back the original Air Max with a visible Air-Sole unit for added cushioning. The leather and mesh upper ensures breathability and comfort, making it a versatile sneaker for everyday wear. This re-release celebrates the classic design with modern updates.<br><br>Manufacture Year: 2017<br><br>Key Features: Air-Sole unit, leather and mesh upper, durable rubber outsole.`,
     image: 'img/NIKEAIR.png'
   },
   {
     id: 4,
     name: 'Nike Air Max 270',
     price: 160.00,
+    description: `The Nike Air Max 270 features a large Air-Sole unit in the heel, providing maximum cushioning and support. The breathable mesh upper enhances comfort, while the sleek design makes it a standout sneaker for both performance and casual wear.<br><br>Manufacture Year: 2018<br><br>Key Features: Air-Sole cushioning, breathable mesh upper, modern design.`,
     image: 'img/AIR2.png'
   },
   {
     id: 5,
     name: 'Knu Skool Suede Shoe',
     price: 75.00,
+    description: `The Knu Skool Suede Shoe from Vans features a classic low-top design with a durable suede upper. The rubber sole ensures excellent grip, while the cushioned insole offers comfort for all-day wear. This re-release maintains the signature Vans aesthetic, perfect for casual wear and light skateboarding.<br><br>Manufacture Year: 2021<br><br>Key Features: Suede upper, rubber sole, cushioned insole.`,
     image: 'img/vans1.png'
   },
   {
     id: 6,
     name: 'Nike Zoom Vomero 5',
     price: 160.00,
+    description: `The Nike Zoom Vomero 5 is designed with Zoom Air technology for responsive cushioning and a smooth ride. The breathable mesh upper provides ventilation, while the durable outsole delivers traction for various activities. This re-release keeps the original performance-focused features.<br><br>Manufacture Year: 2021<br><br>Key Features: Zoom Air technology, breathable mesh upper, durable rubber outsole.`,
     image: 'img/NIKEZOOM.png'
   },
   {
     id: 7,
     name: 'Air Jordan 1 Mid',
     price: 125.00,
+    description: `The Air Jordan 1 Mid blends classic style with modern updates. Featuring a leather and synthetic upper, along with a cushioned midsole, it provides both comfort and style. This popular re-release retains the original silhouette with fresh colorways.<br><br>Manufacture Year: 2020<br><br>Key Features: Leather and synthetic upper, cushioned midsole, iconic design.`,
     image: 'img/AIRJORDAN1MID.png'
   },
   {
     id: 8,
     name: 'Nike Air Max 90',
     price: 130.00,
+    description: `The Nike Air Max 90 is known for its visible Air-Sole unit in the heel, offering cushioning and comfort with every step. The leather and mesh upper provide durability and breathability, making it a popular choice for sneaker lovers.<br><br>Manufacture Year: 2017<br><br>Key Features: Air-Sole cushioning, leather and mesh upper, durable rubber outsole.`,
     image: 'img/airmax90.png'
   },
   {
     id: 9,
     name: 'Yeezy Slide Onyx',
     price: 103.00,
+    description: `The Yeezy Slide Onyx is made from EVA foam, offering lightweight comfort and a minimalist design. The slip-on style provides ease of use, and its sleek look makes it a stylish choice for everyday wear.<br><br>Manufacture Year: 2020<br><br>Key Features: EVA foam, slip-on design, minimalist look.`,
     image: 'img/YEEZYSLIDE.png'
   },
   {
     id: 10,
     name: 'Air Jordan 3 "Dark Iris"',
     price: 200.00,
+    description: `The Air Jordan 3 "Dark Iris" features a premium leather upper with a visible Air-Sole unit for cushioning and support. Its sleek design and bold colorway make it a standout re-release in the Jordan series.<br><br>Manufacture Year: 2022<br><br>Key Features: Leather upper, visible Air-Sole unit, iconic design.`,
     image: 'img/AJ3.jpg'
   },
   {
     id: 11,
     name: 'Air Jordan 5 Retro "White and Black"',
     price: 200.00,
+    description: `The Air Jordan 5 Retro "White and Black" offers a blend of leather and synthetic materials for durability, while the visible Air-Sole unit provides cushioning. This re-release of the classic design retains its premium quality and style.<br><br>Manufacture Year: 2021<br><br>Key Features: Leather and synthetic upper, visible Air-Sole unit, retro design.`,
     image: 'img/AIRJORDAN5RETRO.png'
   },
   {
     id: 12,
     name: 'Samba OG Shoes',
     price: 100.00,
+    description: `The Samba OG Shoes feature a durable leather upper and a rubber sole for long-lasting wear. With a classic silhouette, these sneakers offer comfort and versatility, making them suitable for both casual and athletic activities.<br><br>Manufacture Year: 2021<br><br>Key Features: Leather upper, rubber sole, classic design.`,
     image: 'img/SAMBAOG.png'
   },
   {
     id: 13,
     name: 'Ultraboost 1.0 Shoes',
     price: 180.00,
+    description: `The Ultraboost 1.0 Shoes are equipped with Boost cushioning for optimal comfort and energy return. The primeknit upper offers breathability and a snug fit, making these sneakers ideal for both performance and casual wear.<br><br>Manufacture Year: 2020<br><br>Key Features: Boost cushioning, primeknit upper, responsive fit.`,
     image: 'img/panda.png'
   },
   {
     id: 14,
     name: 'Chuck Taylor All Star Durable Neutrals CX EXP2',
     price: 85.00,
+    description: `The Chuck Taylor All Star Durable Neutrals CX EXP2 combines classic Converse style with modern updates. The durable upper and cushioned insole ensure comfort, while the neutral colorways offer versatility for everyday wear.<br><br>Manufacture Year: 2021<br><br>Key Features: Durable upper, cushioned insole, neutral colorways.`,
     image: 'img/CHUCKTAYLOR.png'
   },
   {
     id: 15,
     name: 'Converse Weapon Leather',
     price: 100.00,
+    description: `The Converse Weapon Leather combines premium leather construction with a rubber sole for durability and support. This re-release offers a clean, classic look with modern comfort for all-day wear.<br><br>Manufacture Year: 2020<br><br>Key Features: Leather upper, rubber sole, retro-inspired design.`,
     image: 'img/converse1.png'
   },
 ];
@@ -139,13 +154,43 @@ function renderProducts() {
 
   productsContainer.innerHTML = productsToRender.map(product => `
         <div class="product-card">
-            <img src="${product.image}" alt="${product.name}" class="product-image">
-            <h3>${product.name}</h3>
-            <p>$${product.price.toFixed(2)}</p>
+      <a href="product.html?id=${product.id}" class="product-link">
+        <img src="${product.image}" alt="${product.name}" class="product-image">
+        <h3>${product.name}</h3>
+      </a>
+              <p>$${product.price.toFixed(2)}</p>
             <button class="nav-btn" onclick="addToCart(${product.id})">Add to Cart</button>
         </div>
     `).join('');
 }
+
+function loadProductPage() {
+  const productId = new URLSearchParams(window.location.search).get('id');
+  const product = products.find(p => p.id == productId);
+
+  if (product) {
+    document.getElementById('productImage').src = product.image;
+    document.getElementById('productName').textContent = product.name;
+    document.getElementById('productDescription').innerHTML = product.description || 'No description available.';
+    document.getElementById('productPrice').textContent = `$${product.price.toFixed(2)}`;
+
+    const relatedProductsContainer = document.getElementById('related-products');
+    relatedProductsContainer.innerHTML = products.filter(p => p.category === product.category && p.id !== product.id)
+      .map(relatedProduct => `
+        <div class="product-card">
+          <a href="product.html?id=${relatedProduct.id}" class="product-link">
+            <img src="${relatedProduct.image}" alt="${relatedProduct.name}" class="product-image">
+            <h3>${relatedProduct.name}</h3>
+          </a>
+          <p>$${relatedProduct.price.toFixed(2)}</p>
+          <button class="nav-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+        </div>
+      `).join('');
+  } else {
+    console.error('Product not found');
+  }
+}
+
 
 function addToCart(productId) {
   if (!isLoggedIn()) {
@@ -328,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dropdown.classList.toggle('show');
       menuToggle.blur();
     });
-    const questions = document.querySelectorAll('.faq-question');
+  const questions = document.querySelectorAll('.faq-question');
     questions.forEach(question => {
       question.addEventListener('click', function () {
         const answer = this.nextElementSibling;
@@ -337,5 +382,9 @@ document.addEventListener('DOMContentLoaded', () => {
         arrow.style.transform = answer.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
       });
     });
+  }
+
+  if (window.location.pathname.includes('product.html')) {
+    loadProductPage();
   }
 });

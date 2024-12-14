@@ -33,19 +33,20 @@
   <main class="content">
     <section class="product-details">
       <div class="product-image">
-        <img src="/api/placeholder/400/400" alt="Product Image">
+        <img id="productImage" src="" alt="Product Image">
       </div>
       <div class="product-info">
-        <h1 class="product-name">Product Name</h1>
-        <p class="product-description">Product description goes here.</p>
-        <p class="product-price">$99.99</p>
-        <button class="nav-btn add-to-cart">Add to Cart</button>
+        <h1 id="productName" class="product-name">Product Name</h1> 
+        <p id="productDescription" class="product-description">Product description goes here.</p> 
+        <p id="productPrice" class="product-price">$99.99</p>
+        <button class="nav-btn add-to-cart" onclick="addToCart()">Add to Cart</button>
       </div>
     </section>
+</main>
 
     <section class="related-products">
       <h2>Related Products</h2>
-      <div class="products-grid">
+      <div class="products-grid" id="related-products">
         <!-- Related products will be dynamically added here -->
       </div>
     </section>
@@ -59,7 +60,7 @@
     <a href="#" class="footer-btn">FULLSCREEN</a>
   </footer>
 
-  <script src="product-script.js"></script>
   <script src="script.js"></script>
+
 </body>
 </html>
