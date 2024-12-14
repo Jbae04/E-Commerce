@@ -10,10 +10,18 @@
   <header class="main-nav">
     <div class="logo">FaceGoogAplix</div>
     <div class="nav-buttons">
-      <a href="index.html" class="nav-btn">Home</a>
-      <a href="shop.html" class="nav-btn">Shop</a>
       <a href="profile.html" class="nav-btn">Profile</a>
-      <button class="nav-btn menu-toggle">☰</button>
+      <div class="dropdown">
+        <button class="nav-btn menu-toggle">☰</button>
+        <div id="menuDropdown" class="dropdown-content">
+          <input type="text" id="dropdownSearch" placeholder="SEARCH..." 
+          class="dropdown-search"/>
+          <a href="index.html">HOME</a>
+          <a href="#">PRODUCTS</a>
+          <a href="#">PREFERENCES</a>
+          <a href="#">FAQ</a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -39,5 +47,6 @@
   </footer>
 
   <script src="cart-script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

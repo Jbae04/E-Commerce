@@ -91,9 +91,11 @@ const products = [
   });
   
   document.querySelector('.menu-toggle')?.addEventListener('click', () => {
-    alert('Menu functionality coming soon!');
+  const dropdown = document.getElementById('menuDropdown');
+  dropdown.classList.toggle('show');
+  const button = document.querySelector('.menu-toggle'); if (button) { button.blur(); }
   });
-  
+
   document.querySelector('.shop-now')?.addEventListener('click', () => {
     document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
   });
