@@ -92,7 +92,7 @@ const products = [
   },
   {
     id: 14,
-    name: 'Chuck Taylor All Star Durable Neutrals CX EXP2',
+    name: 'Chuck Taylor All Star CX EXP2',
     price: 85.00,
     description: `The Chuck Taylor All Star Durable Neutrals CX EXP2 combines classic Converse style with modern updates. The durable upper and cushioned insole ensure comfort, while the neutral colorways offer versatility for everyday wear.<br><br>Manufacture Year: 2021<br><br>Key Features: Durable upper, cushioned insole, neutral colorways.`,
     image: 'img/CHUCKTAYLOR.png'
@@ -178,8 +178,8 @@ function loadProductPage() {
     addToCartBtn.textContent = 'Add to Cart';
     addToCartBtn.classList.add('nav-btn');
     addToCartBtn.id = `add-to-cart-btn`;
-    addToCartBtn.addEventListener('click', function() {
-      addToCart(product.id); 
+    addToCartBtn.addEventListener('click', function () {
+      addToCart(product.id);
     });
 
     document.querySelector('.product-info').appendChild(addToCartBtn);
@@ -224,19 +224,25 @@ function removeFromCart(index) {
 function updateCartUI() {
   const cartCount = document.querySelector('.cart-count');
   if (cartCount) {
-      cartCount.textContent = cart.length;
+    cartCount.textContent = cart.length;
   }
 
   const cartItems = document.getElementById('cart-items');
   if (!cartItems) return;
 
   if (cart.length === 0) {
-      cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
-      return;
+    cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+    const cartTotal = document.getElementById('cart-total');
+    if (cartTotal) {
+      cartTotal.textContent = '$0.00';
+    }
+    return;
+
+    return;
   }
 
   const total = cart.reduce((sum, item) => sum + item.price, 0);
-  
+
   cartItems.innerHTML = cart.map((item, index) => `
       <div class="product-card">
           <img src="${item.image}" alt="${item.name}" class="product-image">
@@ -248,7 +254,7 @@ function updateCartUI() {
 
   const cartTotal = document.getElementById('cart-total');
   if (cartTotal) {
-      cartTotal.textContent = `$${total.toFixed(2)}`;
+    cartTotal.textContent = `$${total.toFixed(2)}`;
   }
 }
 
@@ -359,6 +365,35 @@ function updateOrderHistoryUI() {
     `).join('');
 }
 
+function filterProducts(query) {
+  const searchResultsContainer = document.getElementById('search-results');
+  if (!query.trim()) {
+    searchResultsContainer.innerHTML = '';
+    return;
+  }
+
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(query.toLowerCase())
+  );
+  renderFilteredProducts(filteredProducts);
+}
+
+function renderFilteredProducts(filteredProducts) {
+  const searchResultsContainer = document.getElementById('search-results');
+  if (!searchResultsContainer) return;
+
+  searchResultsContainer.innerHTML = filteredProducts.map(product => `
+    <div class="product-card">
+      <a href="product.html?id=${product.id}" class="product-link">
+        <img src="${product.image}" alt="${product.name}" class="product-image">
+        <h3 class="product-name">${product.name}</h3> 
+      </a>
+      <p class="product-price">$${product.price.toFixed(2)}</p>
+      <button class="nav-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+    </div>
+  `).join('');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   updateCartUI();
@@ -385,7 +420,8 @@ document.addEventListener('DOMContentLoaded', () => {
       dropdown.classList.toggle('show');
       menuToggle.blur();
     });
-  const questions = document.querySelectorAll('.faq-question');
+
+    const questions = document.querySelectorAll('.faq-question');
     questions.forEach(question => {
       question.addEventListener('click', function () {
         const answer = this.nextElementSibling;
@@ -395,6 +431,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  const searchInput = document.getElementById('dropdownSearch');
+  const searchResults = document.getElementById('search-results');
+
+  searchInput.addEventListener('input', function () {
+    const query = this.value.trim();
+    if (query) {
+      searchResults.style.display = 'block';
+      filterProducts(query);
+    } else {
+      searchResults.style.display = 'none';
+    }
+  });
 
   if (window.location.pathname.includes('product.html')) {
     loadProductPage();
