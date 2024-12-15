@@ -349,12 +349,11 @@ h2 {
   align-items: center;
   text-decoration: none;
   color: inherit;
-  gap: 0.5rem;
+  gap: 0.5rem
 }
-
 #search-results a:hover {
   background-color: transparent;
-  text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 30px var(--primary-color), 0 0 40px var(--primary-color);
+  text-shadow: 0 0 2px var(--primary-color), 0 0 2px var(--primary-color), 0 0 2px var(--primary-color), 0 0 50px var(--primary-color);
 }
 
 #search-results .product-card .product-name {

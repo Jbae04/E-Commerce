@@ -447,7 +447,6 @@ function renderFilteredProducts(filteredProducts) {
         <h3 class="product-name">${product.name}</h3> 
       </a>
       <p class="product-price">$${product.price.toFixed(2)}</p>
-      <button class="nav-btn" onclick="addToCart(${product.id})">Add to Cart</button>
     </div>
   `).join('');
 }
