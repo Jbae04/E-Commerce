@@ -159,7 +159,6 @@ function renderProducts() {
         <h3>${product.name}</h3>
       </a>
               <p>$${product.price.toFixed(2)}</p>
-            <button class="nav-btn" onclick="addToCart(${product.id})">Add to Cart</button>
         </div>
     `).join('');
 }
@@ -240,16 +239,6 @@ function loadProductPage() {
   }
 }
 
-
-function updateAddToCartButton() {
-  const addToCartBtn = document.getElementById('add-to-cart-btn');
-
-  if (selectedSize) {
-    addToCartBtn.disabled = false;
-  } else {
-    addToCartBtn.disabled = true;
-  }
-}
 
 function addToCart(productId) {
   if (!isLoggedIn()) {
