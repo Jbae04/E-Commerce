@@ -164,6 +164,7 @@ function renderProducts() {
     `).join('');
 }
 
+let selectedSize = null;
 function loadProductPage() {
   const productId = new URLSearchParams(window.location.search).get('id');
   const product = products.find(p => p.id == productId);
@@ -173,6 +174,44 @@ function loadProductPage() {
     document.getElementById('productName').textContent = product.name;
     document.getElementById('productDescription').innerHTML = product.description || 'No description available.';
     document.getElementById('productPrice').textContent = `$${product.price.toFixed(2)}`;
+
+
+    const sizeSelection = document.createElement('div');
+    sizeSelection.classList.add('size-buttons');
+    const sizes = [
+      { men: 'M4', women: 'W5.5' },
+      { men: 'M4.5', women: 'W6' },
+      { men: 'M5', women: 'W6.5' },
+      { men: 'M5.5', women: 'W7' },
+      { men: 'M6', women: 'W7.5' },
+      { men: 'M6.5', women: 'W8' },
+      { men: 'M7', women: 'W8.5' },
+      { men: 'M7.5', women: 'W9' },
+      { men: 'M8', women: 'W9.5' },
+      { men: 'M8.5', women: 'W10' },
+      { men: 'M9', women: 'W10.5' },
+      { men: 'M9.5', women: 'W11' },
+      { men: 'M10', women: 'W11.5' },
+      { men: 'M10.5', women: 'W12' },
+      { men: 'M11', women: 'W12.5' },
+      { men: 'M11.5', women: 'W13' },
+      { men: 'M12', women: 'W13.5' }
+    ];
+
+    sizes.forEach(size => {
+      const sizeBtn = document.createElement('button');
+      sizeBtn.classList.add('size-btn');
+      sizeBtn.textContent = `${size.men} / ${size.women}`;
+      sizeBtn.setAttribute('data-size', `${size.men}/${size.women}`);
+      sizeBtn.addEventListener('click', function () {
+
+        selectedSize = `${size.men} / ${size.women}`;
+        updateAddToCartButton();
+      });
+      sizeSelection.appendChild(sizeBtn);
+    });
+    document.getElementById('size-selection').appendChild(sizeSelection);
+
 
     const addToCartBtn = document.createElement('button');
     addToCartBtn.textContent = 'Add to Cart';
@@ -202,6 +241,15 @@ function loadProductPage() {
 }
 
 
+function updateAddToCartButton() {
+  const addToCartBtn = document.getElementById('add-to-cart-btn');
+
+  if (selectedSize) {
+    addToCartBtn.disabled = false;
+  } else {
+    addToCartBtn.disabled = true;
+  }
+}
 
 function addToCart(productId) {
   if (!isLoggedIn()) {
@@ -209,10 +257,17 @@ function addToCart(productId) {
     window.location.href = 'login.html';
     return;
   }
+  if (!selectedSize) {
+    alert('Please select a size before adding to the cart');
+    return;
+  }
 
   const product = products.find(p => p.id === productId);
-  cart.push(product);
-  saveCart();
+  if (product) {
+    cart.push({ ...product, selectedSize: selectedSize });
+    saveCart();
+  }
+
 }
 
 function removeFromCart(index) {
@@ -237,8 +292,6 @@ function updateCartUI() {
       cartTotal.textContent = '$0.00';
     }
     return;
-
-    return;
   }
 
   const total = cart.reduce((sum, item) => sum + item.price, 0);
@@ -247,6 +300,7 @@ function updateCartUI() {
       <div class="product-card">
           <img src="${item.image}" alt="${item.name}" class="product-image">
           <h3>${item.name}</h3>
+          <p>Size: ${item.selectedSize}</p>
           <p>$${item.price.toFixed(2)}</p>
           <button class="nav-btn" onclick="removeFromCart(${index})">Remove</button>
       </div>
@@ -313,7 +367,10 @@ function checkout() {
 
   const order = {
     id: Date.now(),
-    items: [...cart],
+    items: cart.map(item => ({
+      ...item,
+      selectedSize: item.selectedSize
+    })),
     total: total,
     date: new Date().toISOString(),
     status: 'Processed'
@@ -357,6 +414,7 @@ function updateOrderHistoryUI() {
                     <div class="order-item">
                         <img src="${item.image}" alt="${item.name}" class="order-item-image">
                         <span>${item.name}</span>
+                        <span>Size: ${item.selectedSize}</span>
                         <span>$${item.price.toFixed(2)}</span>
                     </div>
                 `).join('')}
@@ -393,6 +451,7 @@ function renderFilteredProducts(filteredProducts) {
     </div>
   `).join('');
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
@@ -448,4 +507,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.location.pathname.includes('product.html')) {
     loadProductPage();
   }
+
+  document.querySelectorAll('.size-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('focused'));
+      button.classList.add('focused');
+    });
+  });
+  
 });
