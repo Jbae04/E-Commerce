@@ -473,13 +473,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const menuToggle = document.querySelector('.menu-toggle');
-  if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-      const dropdown = document.getElementById('menuDropdown');
+  const dropdown = document.getElementById('menuDropdown');
+  
+  if (menuToggle && dropdown) {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       dropdown.classList.toggle('show');
       menuToggle.blur();
     });
-
+  
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+  }
     const questions = document.querySelectorAll('.faq-question');
     questions.forEach(question => {
       question.addEventListener('click', function () {
@@ -489,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arrow.style.transform = answer.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
       });
     });
-  }
+  
 
   const searchInput = document.getElementById('dropdownSearch');
   const searchResults = document.getElementById('search-results');

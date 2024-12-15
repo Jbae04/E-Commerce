@@ -257,6 +257,7 @@ h2 {
 }
 
 .dropdown-content {
+  margin-top: 1rem;
   display: none;
   position: absolute;
   right: 2rem;
