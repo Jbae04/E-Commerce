@@ -231,7 +231,6 @@ function loadProductPage() {
             <h3>${relatedProduct.name}</h3>
           </a>
           <p>$${relatedProduct.price.toFixed(2)}</p>
-          <button class="nav-btn" onclick="addToCart(${relatedProduct.id})">Add to Cart</button>
         </div>
       `).join('');
   } else {
