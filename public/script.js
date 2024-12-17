@@ -88,7 +88,7 @@ const products = [
     name: 'Ultraboost 1.0 Shoes',
     price: 180.00,
     description: `The Ultraboost 1.0 Shoes are equipped with Boost cushioning for optimal comfort and energy return. The primeknit upper offers breathability and a snug fit, making these sneakers ideal for both performance and casual wear.<br><br>Manufacture Year: 2020<br><br>Key Features: Boost cushioning, primeknit upper, responsive fit.`,
-    image: 'img/panda.png'
+    image: 'img/ultraboost.png'
   },
   {
     id: 14,
@@ -104,6 +104,27 @@ const products = [
     description: `The Converse Weapon Leather combines premium leather construction with a rubber sole for durability and support. This re-release offers a clean, classic look with modern comfort for all-day wear.<br><br>Manufacture Year: 2020<br><br>Key Features: Leather upper, rubber sole, retro-inspired design.`,
     image: 'img/converse1.png'
   },
+  {
+    id: 16,
+    name: 'New Balance x JJJJound 993 "Olive"',
+    price: 160.00,
+    description: `The New Balance x JJJJound 993 blends classic New Balance craftsmanship with a refined design by the popular Montreal-based brand, JJJJound. Featuring a premium suede and mesh upper, it offers a supportive midsole and durable outsole for all-day comfort. Perfect for a stylish, everyday look.<br><br>Manufacture Year: 2022<br><br>Key Features: Suede and mesh upper, ENCAP midsole cushioning, durable rubber outsole.`,
+    image: 'img/new-balance-x-jjjjound-x-990v3-m.png'
+  },
+  {
+    id: 17,
+    name: 'New Balance x Aimé Leon Dore 550 "White"',
+    price: 150.00,
+    description: `The New Balance x Aimé Leon Dore 550 is a high-fashion twist on the classic New Balance silhouette. Designed in collaboration with the New York lifestyle brand, Aimé Leon Dore, this sneaker offers premium leather and suede accents along with a unique color palette. A perfect balance of classic and streetwear.<br><br>Manufacture Year: 2023<br><br>Key Features: Premium leather and suede upper, unique color palette, cushioned footbed for comfort.`,
+    image: 'img/new-balance-aime-leon-dore-x-550.png'
+  },
+  {
+    id: 18,
+    name: 'Adidas Stan Smith',
+    price: 85.00,
+    description: `The Adidas Stan Smith is a timeless classic that combines simple elegance with everyday comfort. Featuring a clean leather upper and perforated 3-stripes design, this iconic sneaker is perfect for any casual outfit. A versatile and enduring symbol of style.<br><br>Manufacture Year: 2021<br><br>Key Features: Smooth leather upper, perforated 3-stripes, rubber outsole for durability.`,
+    image: 'img/stan-smiths.png'
+  }  
 ];
 
 
@@ -150,7 +171,10 @@ function renderProducts() {
   if (!productsContainer) return;
 
   const isHomePage = document.getElementById('HomePage') !== null;
-  const productsToRender = isHomePage ? products.slice(0, 2) : products;
+  const productsToRender = isHomePage ? 
+    products.sort(() => Math.random() - 0.5).slice(0, 2) : 
+    products;
+
 
   productsContainer.innerHTML = productsToRender.map(product => `
         <div class="product-card">
@@ -174,42 +198,30 @@ function loadProductPage() {
     document.getElementById('productDescription').innerHTML = product.description || 'No description available.';
     document.getElementById('productPrice').textContent = `$${product.price.toFixed(2)}`;
 
+    document.title = `${product.name} - E-Commerce Website`;
 
     const sizeSelection = document.createElement('div');
     sizeSelection.classList.add('size-buttons');
-    const sizes = [
-      { men: 'M4', women: 'W5.5' },
-      { men: 'M4.5', women: 'W6' },
-      { men: 'M5', women: 'W6.5' },
-      { men: 'M5.5', women: 'W7' },
-      { men: 'M6', women: 'W7.5' },
-      { men: 'M6.5', women: 'W8' },
-      { men: 'M7', women: 'W8.5' },
-      { men: 'M7.5', women: 'W9' },
-      { men: 'M8', women: 'W9.5' },
-      { men: 'M8.5', women: 'W10' },
-      { men: 'M9', women: 'W10.5' },
-      { men: 'M9.5', women: 'W11' },
-      { men: 'M10', women: 'W11.5' },
-      { men: 'M10.5', women: 'W12' },
-      { men: 'M11', women: 'W12.5' },
-      { men: 'M11.5', women: 'W13' },
-      { men: 'M12', women: 'W13.5' }
-    ];
-
-    sizes.forEach(size => {
+    
+    for (let i = 4; i <= 13.5; i += 0.5) {
+      const menSize = i;
+      const womenSize = i+1.5; 
+      const size = `M${menSize} / W${womenSize}`;
+      
       const sizeBtn = document.createElement('button');
       sizeBtn.classList.add('size-btn');
-      sizeBtn.textContent = `${size.men} / ${size.women}`;
-      sizeBtn.setAttribute('data-size', `${size.men}/${size.women}`);
+      sizeBtn.textContent = size;
+      sizeBtn.setAttribute('data-size', size);
       sizeBtn.addEventListener('click', function () {
-
-        selectedSize = `${size.men} / ${size.women}`;
+        selectedSize = size;
         updateAddToCartButton();
       });
+      
       sizeSelection.appendChild(sizeBtn);
-    });
+    }
+    
     document.getElementById('size-selection').appendChild(sizeSelection);
+    
 
 
     const addToCartBtn = document.createElement('button');
@@ -286,8 +298,10 @@ function updateCartUI() {
 
   cartItems.innerHTML = cart.map((item, index) => `
       <div class="product-card">
+         <a href="product.html?id=${item.id}" class="product-link">
           <img src="${item.image}" alt="${item.name}" class="product-image">
           <h3>${item.name}</h3>
+      </a>
           <p>Size: ${item.selectedSize}</p>
           <p>$${item.price.toFixed(2)}</p>
           <button class="nav-btn" onclick="removeFromCart(${index})">Remove</button>
@@ -388,7 +402,7 @@ function updateOrderHistoryUI() {
   const userOrders = JSON.parse(localStorage.getItem('userOrders')) || {};
   const orders = userOrders[currentUser.email] || [];
   if (orders.length === 0) {
-    orderListContainer.innerHTML = '<p>No order history found.</p>';
+    orderListContainer.innerHTML = '<p id="no-orders">No order history found.</p>';
     return;
   }
   orderListContainer.innerHTML = orders.map(order => `
@@ -400,9 +414,11 @@ function updateOrderHistoryUI() {
             <div class="order-items">
                 ${order.items.map(item => `
                     <div class="order-item">
-                        <img src="${item.image}" alt="${item.name}" class="order-item-image">
-                        <span>${item.name}</span>
-                        <span>Size: ${item.selectedSize}</span>
+                        <a href="product.html?id=${item.id}">
+                          <img src="${item.image}" alt="${item.name}" class="order-item-image">
+                        </a>
+                        <a href="product.html?id=${item.id}" class="order-item-name">${item.name}</a>
+                        Size: ${item.selectedSize}</span>
                         <span>$${item.price.toFixed(2)}</span>
                     </div>
                 `).join('')}
@@ -454,6 +470,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const themeToggle = document.getElementById('theme-toggle');
+    
+  themeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('light-mode');
+    const isLightMode = document.documentElement.classList.contains('light-mode');
+    localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+  });
+
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') { 
+    document.documentElement.classList.add('light-mode'); 
+  } else { 
+    document.documentElement.classList.remove('light-mode'); 
+  }
+
+
+
   const checkoutBtn = document.getElementById('checkout-btn');
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', checkout);
@@ -461,30 +494,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const menuToggle = document.querySelector('.menu-toggle');
   const dropdown = document.getElementById('menuDropdown');
-  
+
   if (menuToggle && dropdown) {
     menuToggle.addEventListener('click', (e) => {
       e.stopPropagation();
       dropdown.classList.toggle('show');
       menuToggle.blur();
     });
-  
+
     document.addEventListener('click', (e) => {
       if (!menuToggle.contains(e.target) && !dropdown.contains(e.target)) {
         dropdown.classList.remove('show');
       }
     });
   }
-    const questions = document.querySelectorAll('.faq-question');
-    questions.forEach(question => {
-      question.addEventListener('click', function () {
-        const answer = this.nextElementSibling;
-        const arrow = this.querySelector('.arrow');
-        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-        arrow.style.transform = answer.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
-      });
+  const questions = document.querySelectorAll('.faq-question');
+  questions.forEach(question => {
+    question.addEventListener('click', function () {
+      const answer = this.nextElementSibling;
+      const arrow = this.querySelector('.arrow');
+      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      arrow.style.transform = answer.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
     });
-  
+  });
+
 
   const searchInput = document.getElementById('dropdownSearch');
   const searchResults = document.getElementById('search-results');
@@ -509,5 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
       button.classList.add('focused');
     });
   });
-  
+
 });
+
+

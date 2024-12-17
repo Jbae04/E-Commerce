@@ -9,11 +9,35 @@
 
 }
 
+:root.light-mode {
+  --primary-color: #007BFF;
+  --secondary-color: #ffffff;
+  --background-color: #FFFFFF;
+  --text-color: #343A40;
+  --accent-color: #FFC107; 
+  --overlay-color: rgb(255, 255, 255);
+}
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Arial', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color); 
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 body {
@@ -30,13 +54,31 @@ body {
   background-position: center;
 }
 
+.logo-link {
+  text-decoration: none; 
+  color: inherit;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
 
 #HomePage {
-  background-image: url(https://i.pinimg.com/originals/a4/7b/c0/a47bc003e83231811753eac24b09431c.gif);
+  background-image: url(https://s13.gifyu.com/images/SJXj7.gif);
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center top -30px
 }
+
+:root.light-mode #HomePage {
+  background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/fs/f5db6735015213.56eac05a6f7f2.gif);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center top -230px
+}
+
 
 /*Shop Page */
 #ShopPage {
@@ -145,7 +187,7 @@ body {
   transition: background-color 0.7s ease, color 0.7s ease;
   text-align: left;
   padding: 2rem;
-  border: 2px solid var(--primary-color);
+  border: 3px solid var(--accent-color);
   border-radius: 8px;
   margin-bottom: 10px;
 }
@@ -220,10 +262,14 @@ h2 {
   align-items: center;
 }
 
+.footer-nav{
+  margin-bottom: 1rem;
+}
+
 .nav-btn,
 .footer-btn {
   background: transparent;
-  border: 1px solid var(--primary-color);
+  border: 3px solid var(--accent-color);
   color: var(--primary-color);
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -240,7 +286,7 @@ h2 {
 .cart-icon {
   cursor: pointer;
   padding: 0.5rem;
-  border: 1px solid var(--primary-color);
+  border: 3px solid var(--accent-color);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -262,7 +308,7 @@ h2 {
   position: absolute;
   right: 2rem;
   background-color: var(--background-color);
-  border: 1px solid var(--primary-color);
+  border: 3px solid var(--accent-color);
   border-radius: 5px;
   max-width: 500px;
   overflow: hidden;
@@ -289,7 +335,7 @@ h2 {
 .dropdown-search {
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid var(--primary-color);
+  border: 3px solid var(--accent-color);
   background-color: var(--background-color);
   color: var(--primary-color);
   font-size: 1rem;
@@ -315,6 +361,27 @@ h2 {
   opacity: 1;
 }
 
+#theme-toggle {
+  min-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color); 
+  padding: 1.2rem;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#theme-toggle:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
 #search-results {
   display: none;
   max-height: 500px;
@@ -322,7 +389,7 @@ h2 {
   overflow-y: auto;
   overflow-x: hidden;
   background-color: var(--background-color);
-  border-top: 1px solid var(--primary-color);
+  border-top: 1px solid var(--accent-color);
   box-sizing: border-box;
 }
 
@@ -337,6 +404,7 @@ h2 {
   border-radius: 0px;
   overflow: hidden;
   box-sizing: border-box;
+  margin:auto
 }
 
 #search-results .product-card:hover {
@@ -353,7 +421,7 @@ h2 {
 }
 #search-results a:hover {
   background-color: transparent;
-  text-shadow: 0 0 2px var(--primary-color), 0 0 2px var(--primary-color), 0 0 2px var(--primary-color), 0 0 50px var(--primary-color);
+  text-shadow: 0 0 2px var(--accent-color), 0 0 2px var(--accent-color), 0 0 2px var(--accent-color), 0 0 50px var(--accent-color);
 }
 
 #search-results .product-card .product-name {
@@ -362,12 +430,14 @@ h2 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top:1rem;
 }
 
 #search-results a img {
   width: 100px;
   height: 100px;
   object-fit: cover;
+
 }
 
 
@@ -405,6 +475,7 @@ h2 {
 }
 
 .hero-text {
+  color:var(--accent-color);
   font-size: 3rem;
   font-weight: bold;
   line-height: 1.2;
@@ -420,8 +491,8 @@ h2 {
 }
 
 .discover-btn {
-  background: black;
-  border: 2px solid var(--primary-color);
+  background: var(--background-color);
+  border: 3px solid var(--accent-color);
   color: var(--primary-color);
   padding: 1rem 2rem;
   font-size: 1.2rem;
@@ -447,7 +518,7 @@ h2 {
 .shop-welcome h1 {
   font-size: 1.5rem;
   color: var(--primary-color);
-  text-shadow: 2px 2px 4px var(--secondary-color);
+  text-shadow: 1px 1px 2px black;
   margin-bottom: 1rem;
 }
 
@@ -455,7 +526,7 @@ h2 {
   font-size: 3rem;
   font-weight: bold;
   line-height: 1.2;
-  text-shadow: 6px 6px 4px var(--secondary-color);
+  text-shadow: 1px 1px 2px black;
 }
 
 .shop-welcome .hero-text span {
@@ -473,7 +544,7 @@ h2 {
 
 .product-card {
   background-color: var(--secondary-color);
-  border: 1px solid var(--primary-color);
+  border: 3px solid var(--accent-color);
   border-radius: 8px;
   padding: 1rem;
   display: flex;
@@ -481,6 +552,7 @@ h2 {
   align-items: center;
   text-align: center;
   transition: transform 0.3s ease;
+  margin:0.2rem;
 }
 
 .product-card:hover {
@@ -490,7 +562,7 @@ h2 {
 .product-card img {
   max-width: 100%;
   height: 250px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 8px;
   margin-top: -2rem;
   margin-bottom: -2rem;
@@ -503,7 +575,7 @@ h2 {
 
 .product-card a.product-link:hover {
   transition: color 0.3s ease, text-shadow 0.3s ease;
-  text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 30px var(--primary-color), 0 0 40px var(--primary-color);
+  text-shadow: 0 0 3px var(--accent-color), 0 0 5px var(--accent-color);
 }
 
 
@@ -522,20 +594,6 @@ h2 {
   color: var(--text-color);
   font-size: 1rem;
   margin-bottom: 1rem;
-}
-
-.product-card .add-to-cart {
-  background: transparent;
-  border: 1px solid var(--primary-color);
-  color: var(white);
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.product-card .add-to-cart:hover {
-  background-color: var(--primary-color);
-  color: var(--background-color);
 }
 
 .product-details {
@@ -601,7 +659,7 @@ h2 {
 
 .product-details .product-info .nav-btn {
   background: transparent;
-  border: 4px solid var(--primary-color);
+  border: 3px solid var(--accent-color);
   color: var(--primary-color);
   padding: 1rem 2rem;
   font-size: 2rem;
@@ -618,7 +676,7 @@ h2 {
 .size-btn {
   width: 10rem;
   background: transparent;
-  border: 1px solid var(--primary-color);
+  border: 3px solid var(--accent-color);
   color: var(--primary-color);
   padding: 0.5rem 1rem;
   margin-right:1rem;
@@ -635,7 +693,7 @@ h2 {
 .size-btn.focused {
   background-color: var(--primary-color);
   color: var(--background-color);
-  border-color: var(--text-color);
+  border-color: var(--accent-color);
 }
 
 .cart-container {
@@ -693,7 +751,7 @@ h2 {
   padding: 0.75rem;
   margin-bottom: 1rem;
   background-color: var(--background-color);
-  border: 1px solid var(--primary-color);
+  border: 3px solid var(--primary-color);
   color: var(--text-color);
 }
 
@@ -740,18 +798,64 @@ h2 {
   cursor: pointer;
 }
 
-.order-history h2 {
+.order-history{
   color: var(--primary-color);
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  margin-top: 3rem;
 }
 
 .order-list {
-  display: grid;
-  gap: 1rem;
+  padding: 2rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.order-card {
+  background: var(--secondary-color);
+  outline: 3px solid var(--accent-color); 
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.order-card p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+
+}
+
+.order-card .order-items {
+  margin-top: 1rem;
 }
 
 .order-item {
-  background-color: var(--secondary-color);
-  padding: 1rem;
-  border-radius: 8px;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.order-item img {
+  max-width: 200px;
+  height: auto;
+  margin-right: 1rem;
+  margin-left:5rem;
+}
+
+.order-item-name {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold; 
+  transition: color 0.3s ease; 
+}
+
+.order-item span{
+  margin-right:5rem;
+}
+
+.order-card:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
 }

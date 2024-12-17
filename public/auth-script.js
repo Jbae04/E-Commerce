@@ -21,7 +21,7 @@ function signup(email, password, name) {
       name,
       address: '',
       phone: '',
-      image: '/api/placeholder/200/200'
+      image: 'img/default.jpg'
   };
   
   users.push(newUser);
