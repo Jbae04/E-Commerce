@@ -383,7 +383,7 @@ h2 {
 
 #search-results {
   display: none;
-  max-height: 430px;
+  max-height: 220px;
   max-width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
